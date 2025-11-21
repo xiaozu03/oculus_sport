@@ -51,6 +51,8 @@ This project strictly adheres to the **MVVM (Model-View-ViewModel)** pattern to 
 │   ├── User.cs         # User profile data (local & remote)
 │   ├── Facility.cs     # Facility info (e.g., "Badminton Court 1")
 │   └── Booking.cs      # Booking details (user, facility, date)
+│   └── SportCategory.cs
+│   └── TimeSlot.cs
 │
 ├── ViewModels/
 │   ├── Base/
