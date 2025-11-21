@@ -1,9 +1,12 @@
+using oculus_sport.ViewModels.Main;
+
 namespace oculus_sport.Views.Main;
 
 public partial class ProfilePage : ContentPage
 {
-	public ProfilePage()
-	{
-		InitializeComponent();
-	}
+    public ProfilePage(ProfilePageViewModel vm)
+    {
+        InitializeComponent();
+        BindingContext = vm;
+    }
 }

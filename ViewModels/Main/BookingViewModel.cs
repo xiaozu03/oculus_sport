@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using oculus_sport.Models;
 using oculus_sport.ViewModels.Base;
+using oculus_sport.Services;
 
 namespace oculus_sport.ViewModels.Main;
 
@@ -68,19 +69,37 @@ public partial class BookingViewModel : BaseViewModel
     async Task ConfirmBooking()
     {
         var selectedSlot = TimeSlots.FirstOrDefault(s => s.IsSelected);
-        if (selectedSlot == null)
+        if (selectedSlot == null) { /* error */ return; }
+
+        // Create initial booking object
+        var draftBooking = new Booking
         {
-            await Shell.Current.DisplayAlert("Error", "Please select a time slot.", "OK");
-            return;
-        }
+            UserId = "Tony",
+            FacilityName = Facility.Name,
+            FacilityImage = Facility.ImageUrl,
+            Location = Facility.Location,
+            Date = SelectedDate,
+            TimeSlot = selectedSlot.TimeRange,
+            Status = "Draft"
+        };
 
-        // Logic to save booking would go here
+        // Navigate to Details Page
+        var navigationParameter = new Dictionary<string, object>
+    {
+        { "Booking", draftBooking }
+    };
 
-        await Shell.Current.DisplayAlert("Success",
-            $"Booking Confirmed!\nCourt: {Facility.Name}\nDate: {SelectedDate:d}\nTime: {selectedSlot.TimeRange}",
-            "OK");
+        await Shell.Current.GoToAsync("BookingDetailsPage", navigationParameter);
+    }
 
-        // Navigate back to Home
-        await Shell.Current.GoToAsync("..");
+
+    private readonly IBookingService _bookingService;
+
+    public BookingViewModel(IBookingService bookingService)
+    {
+        _bookingService = bookingService;
+        Title = "Select Time";
+        GenerateTimeSlots();
     }
 }
+

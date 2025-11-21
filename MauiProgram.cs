@@ -1,5 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
-using CommunityToolkit.Maui;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
+using oculus_sport.Services;
 using oculus_sport.Services.Auth;
 using oculus_sport.Services.Storage;
 using oculus_sport.ViewModels.Auth;
@@ -28,6 +29,7 @@ public static class MauiProgram
         // We use FirebaseDataService as the IDatabaseService implementation
         builder.Services.AddSingleton<IDatabaseService, FirebaseDataService>();
         builder.Services.AddSingleton<Services.Other.ConnectivityService>();
+        builder.Services.AddSingleton<IBookingService, BookingService>();
 
         // 2. ViewModels (Transient - created when needed)
         builder.Services.AddTransient<LoginPageViewModel>();
@@ -37,7 +39,13 @@ public static class MauiProgram
         builder.Services.AddTransient<EventPageViewModel>();
         builder.Services.AddTransient<ProfilePageViewModel>();
         builder.Services.AddTransient<HistoryPageViewModel>();
-        builder.Services.AddTransient<BookingViewModel>();// Added based on wireframe Page 1 "View Booking Hist"
+        builder.Services.AddTransient<BookingViewModel>();
+        builder.Services.AddTransient<BookingDetailsViewModel>();
+        builder.Services.AddTransient<BookingDetailsPage>();
+        builder.Services.AddTransient<BookingConfirmationViewModel>();
+        builder.Services.AddTransient<BookingConfirmationPage>();
+        builder.Services.AddTransient<BookingSuccessViewModel>();
+        builder.Services.AddTransient<BookingSuccessPage>();
 
         // 3. Views (Transient)
         builder.Services.AddTransient<LoginPage>();

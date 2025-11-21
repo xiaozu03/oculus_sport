@@ -69,11 +69,29 @@ build_metadata.AdditionalFiles.ManifestResourceName = oculus_sport.Views.Auth.Si
 build_metadata.AdditionalFiles.TargetPath = Views\Auth\SignUpPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\Auth\SignUpPage.xaml
 
+[C:/Backup/New/MobileApp/oculus_sport/oculus_sport/Views/Main/BookingConfirmationPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = oculus_sport.Views.Main.BookingConfirmationPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Main\BookingConfirmationPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Main\BookingConfirmationPage.xaml
+
+[C:/Backup/New/MobileApp/oculus_sport/oculus_sport/Views/Main/BookingDetailsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = oculus_sport.Views.Main.BookingDetailsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Main\BookingDetailsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Main\BookingDetailsPage.xaml
+
 [C:/Backup/New/MobileApp/oculus_sport/oculus_sport/Views/Main/BookingPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = oculus_sport.Views.Main.BookingPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\Main\BookingPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\Main\BookingPage.xaml
+
+[C:/Backup/New/MobileApp/oculus_sport/oculus_sport/Views/Main/BookingSuccessPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = oculus_sport.Views.Main.BookingSuccessPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Main\BookingSuccessPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Main\BookingSuccessPage.xaml
 
 [C:/Backup/New/MobileApp/oculus_sport/oculus_sport/Views/Main/EventPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
