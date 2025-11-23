@@ -1,10 +1,16 @@
 using System;
+using SQLite; // Required for SQLite attributes
 
 namespace oculus_sport.Models
 {
     public class Booking
     {
-        public string Id { get; set; } = Guid.NewGuid().ToString().Substring(0, 8).ToUpper(); // Shorter ID for display
+        // [PrimaryKey] ensures the local booking record can be looked up quickly.
+        [PrimaryKey] 
+        public string Id { get; set; } = Guid.NewGuid().ToString().Substring(0, 8).ToUpper(); 
+        
+        // Use [Indexed] for efficient querying in SQLite (e.g., finding all of a user's bookings)
+        [Indexed]
         public string UserId { get; set; }
 
         // Facility Details
@@ -14,15 +20,15 @@ namespace oculus_sport.Models
 
         // Time Details
         public DateTime Date { get; set; }
-        public string TimeSlot { get; set; } // e.g. "10:00 - 11:00"
-        public string Status { get; set; } = "Pending"; // Changed default to Pending
+        public string TimeSlot { get; set; } 
+        public string Status { get; set; } = "Pending";
 
-        // Contact Details (New)
+        // Contact Details
         public string ContactName { get; set; }
         public string ContactStudentId { get; set; }
         public string ContactPhone { get; set; }
 
-        // Payment (New)
-        public string TotalCost { get; set; } = "Rp 50.000"; // Simplified for now
+        // Payment
+        public string TotalCost { get; set; } = "Rp 50.000"; 
     }
 }
