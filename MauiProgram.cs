@@ -8,7 +8,7 @@ using oculus_sport.ViewModels.Main;
 using oculus_sport.Views.Auth;
 using oculus_sport.Views.Main;
 
-// These using statements are for Firebase initialization and services
+// These using statements are for Firebase initialization and service
 using Plugin.Firebase;
 using Plugin.Firebase.Auth;
 using Plugin.Firebase.Firestore;
