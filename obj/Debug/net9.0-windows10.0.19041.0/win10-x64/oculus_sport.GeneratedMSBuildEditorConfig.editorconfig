@@ -93,6 +93,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = oculus_sport.Views.Main.Bo
 build_metadata.AdditionalFiles.TargetPath = Views\Main\BookingSuccessPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\Main\BookingSuccessPage.xaml
 
+[C:/Backup/New/MobileApp/oculus_sport/oculus_sport/Views/Main/EventDetailsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = oculus_sport.Views.Main.EventDetailsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Main\EventDetailsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Main\EventDetailsPage.xaml
+
 [C:/Backup/New/MobileApp/oculus_sport/oculus_sport/Views/Main/EventPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = oculus_sport.Views.Main.EventPage.xaml

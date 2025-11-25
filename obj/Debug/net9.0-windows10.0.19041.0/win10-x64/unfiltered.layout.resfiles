@@ -46,7 +46,8 @@ appiconWideTile.scale-125.png
 appiconWideTile.scale-150.png
 appiconWideTile.scale-200.png
 appiconWideTile.scale-400.png
-badminton_court.scale-100.png
+badminton_court.scale-100.webp
+basketball_court.scale-100.webp
 calendar.scale-100.png
 clock.scale-100.png
 dotnet_bot.scale-100.png
@@ -56,6 +57,7 @@ dotnet_bot.scale-200.png
 dotnet_bot.scale-400.png
 event.scale-100.png
 home.scale-100.png
+pingpong_court.scale-100.png
 user.scale-100.png
 splashSplashScreen.scale-100.png
 splashSplashScreen.scale-125.png

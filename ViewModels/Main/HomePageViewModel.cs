@@ -8,15 +8,18 @@ namespace oculus_sport.ViewModels.Main
 {
     public partial class HomePageViewModel : BaseViewModel
     {
-        // FIX: Use private fields (Standard MVVM Toolkit syntax)
         [ObservableProperty]
         private string _userName = "Tony";
 
         [ObservableProperty]
         private ObservableCollection<SportCategory> _categories = new();
 
+        // This is the collection bound to the UI
         [ObservableProperty]
         private ObservableCollection<Facility> _facilities = new();
+
+        // Master list to hold all data
+        private List<Facility> _allFacilities = new();
 
         public HomePageViewModel()
         {
@@ -26,30 +29,27 @@ namespace oculus_sport.ViewModels.Main
 
         private void LoadData()
         {
-            // 1. Create Categories
-            Categories.Add(new SportCategory { Name = "Pickleball", IsSelected = true });
-            Categories.Add(new SportCategory { Name = "Badminton" });
-            Categories.Add(new SportCategory { Name = "Football" });
-            Categories.Add(new SportCategory { Name = "Tennis" });
+            // 1. Categories
+            Categories.Add(new SportCategory { Name = "Badminton", IsSelected = true });
+            Categories.Add(new SportCategory { Name = "Ping-Pong" });
+            Categories.Add(new SportCategory { Name = "Basketball" });
 
-            // 2. Create Facilities
-            Facilities.Add(new Facility
-            {
-                Name = "Court 1",
-                Location = "UTS Indoor Hall",
-                Price = "RM 15/hr",
-                Rating = 4.5,
-                ImageUrl = "badminton_court.png"
-            });
+            // 2. Generate All Facilities (Master Data)
+            _allFacilities.Clear();
 
-            Facilities.Add(new Facility
-            {
-                Name = "Court 2",
-                Location = "UTS Indoor Hall",
-                Price = "RM 20/hr",
-                Rating = 4.8,
-                ImageUrl = "badminton_court.png"
-            });
+            // Badminton
+            for (int i = 1; i <= 3; i++)
+                _allFacilities.Add(new Facility { Name = $"Badminton Court {i}", Location = "UTS Indoor Hall", Price = "Free", Rating = 4.5, ImageUrl = "badminton_court.webp" });
+
+            // Ping-Pong
+            for (int i = 1; i <= 4; i++)
+                _allFacilities.Add(new Facility { Name = $"Ping-Pong Table {i}", Location = "Student Center L2", Price = "Free", Rating = 4.8, ImageUrl = "pingpong_court.png" });
+
+            // Basketball
+            _allFacilities.Add(new Facility { Name = "Basketball Court 1", Location = "Outdoor Complex", Price = "Free", Rating = 4.2, ImageUrl = "basketball_court.webp" });
+
+            // 3. Initial Filter (Badminton is selected by default)
+            FilterFacilities("Badminton");
         }
 
         [RelayCommand]
@@ -57,26 +57,36 @@ namespace oculus_sport.ViewModels.Main
         {
             if (Categories == null) return;
 
-            foreach (var c in Categories)
-            {
-                c.IsSelected = false;
-            }
-
+            // UI Update: Select the category pill
+            foreach (var c in Categories) c.IsSelected = false;
             category.IsSelected = true;
+
+            // Logic Update: Filter the list
+            FilterFacilities(category.Name);
+        }
+
+        private void FilterFacilities(string categoryName)
+        {
+            Facilities.Clear();
+
+            // Simple text matching to find relevant courts
+            // e.g. "Badminton" matches "Badminton Court 1"
+            var filtered = _allFacilities.Where(f => f.Name.Contains(categoryName, StringComparison.OrdinalIgnoreCase));
+
+            foreach (var facility in filtered)
+            {
+                Facilities.Add(facility);
+            }
         }
 
         [RelayCommand]
         async Task BookFacility(Facility facility)
         {
-            if (facility == null) return;
-
-            // Navigate to BookingPage and pass the selected Facility object
             var navigationParameter = new Dictionary<string, object>
             {
                 { "Facility", facility }
             };
-
-            await Shell.Current.GoToAsync(nameof(Views.Main.BookingPage), navigationParameter);
+            await Shell.Current.GoToAsync("BookingPage", navigationParameter);
         }
     }
 }
