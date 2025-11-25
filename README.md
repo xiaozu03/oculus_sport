@@ -20,6 +20,7 @@ The project is built following a strict **MVVM (Model-View-ViewModel)** pattern 
 * **Authentication:** Firebase Authentication
 * **Local Database:** SQLite (for offline capabilities)
 * **UI:** XAML
+* **Plugins:** CommunityToolkit.Maui, CommunityToolkit.Mvvm, sqlite-net-pcl, SQLitePCLRaw.bundle_green, Plugin.Firebase, Microsoft.Extensions.Logging.Debug
 
 ## 3. Core Features
 
